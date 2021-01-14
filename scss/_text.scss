@@ -1,11 +1,17 @@
+/*!Style of text*/
 .analysis {
     &__text {
         grid-area: text;
-        background-color: #fff;
+        background-color: $bg-color;
+        border-radius: 10px;
+        padding: 10px;
     }
 
     &__content {
         width: 100%;
-        height: 100%;
+        padding: 10px;
+        border: none;
+        background-color: $bg-color;
+
     }
 }
