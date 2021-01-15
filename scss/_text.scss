@@ -1,10 +1,9 @@
 /*!Style of text*/
+
 .analysis {
     &__text {
         grid-area: text;
-        background-color: $bg-color;
-        border-radius: 10px;
-        padding: 10px;
+        @extend %basic-styles;
     }
 
     &__content {

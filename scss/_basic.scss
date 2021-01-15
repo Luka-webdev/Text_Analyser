@@ -1,0 +1,43 @@
+/*!Basic styles*/
+
+$bg-color: #dfe4ea;
+
+$headers-font:'Yusei Magic',
+sans-serif;
+
+%basic-styles {
+    background-color: $bg-color;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #345;
+}
+
+.analysis {
+    width: 90vw;
+    max-width: 1400px;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 2fr 1fr;
+    gap: 20px;
+    grid-template-areas: "text options"
+        "text styles";
+
+    &__title {
+        font-family: $headers-font;
+        text-align: center;
+    }
+}

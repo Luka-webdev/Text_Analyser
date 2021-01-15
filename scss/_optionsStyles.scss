@@ -1,0 +1,8 @@
+/*! Options Styles */
+
+.analysis {
+    &__optionsStyles {
+        grid-area: styles;
+        @extend %basic-styles;
+    }
+}
