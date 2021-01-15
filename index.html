@@ -22,8 +22,42 @@
           ></textarea>
         </form>
       </div>
+
       <div class="analysis__options">
         <h2 class="analysis__title">Opcje wyszukiwania</h2>
+        <form>
+          <div class="analysis__inputWrapper">
+            <span class="analysis__inputTitle">Wpisz szukaną frazę</span>
+            <input type="text" class="analysis__phrase" />
+          </div>
+
+          <div class="analysis__inputWrapper">
+            <span class="analysis__inputTitle"
+              >Znajdź wyrazy o podanej liczbie znaków</span
+            >
+            <input type="number" min="0" class="analysis__length" />
+          </div>
+
+          <div class="analysis__inputWrapper">
+            <span class="analysis__inputTitle">Znajdź:</span>
+            <select class="analysis__specialOptions">
+              <option disabled selected>Wybierz opcję</option>
+              <option>Adresy email</option>
+              <option>Numery telefonów</option>
+              <option>Cytaty</option>
+            </select>
+          </div>
+
+          <div class="analysis__inputWrapper">
+            <span class="analysis__inputTitle">Ignoruj wielkość liter</span>
+            <input type="checkbox" class="analysis__letterSize" />
+          </div>
+
+          <div class="analysis__inputWrapper">
+            <span class="analysis__inputTitle">Zlicz ilość wystąpień</span>
+            <input type="checkbox" class="analysis__appearances" />
+          </div>
+        </form>
       </div>
       <div class="analysis__optionsStyles">
         <h2 class="analysis__title">Style wyszukiwania</h2>
