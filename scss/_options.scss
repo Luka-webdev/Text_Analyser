@@ -4,5 +4,23 @@
     &__options {
         grid-area: options;
         @extend %basic-styles;
+        text-align: center;
+    }
+
+    &__inputWrapper {
+        margin: 15px 0;
+        font-family: $text-font;
+    }
+
+    &__inputWrapper span+* {
+        width: 30%;
+        margin-left: 10px;
+        padding: 5px;
+    }
+
+    &__inputTitle {
+        display: inline-block;
+        width: 60%;
+        text-align: right;
     }
 }

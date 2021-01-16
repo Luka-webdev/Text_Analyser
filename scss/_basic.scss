@@ -5,6 +5,9 @@ $bg-color: #dfe4ea;
 $headers-font:'Yusei Magic',
 sans-serif;
 
+$text-font:'Roboto',
+sans-serif;
+
 %basic-styles {
     background-color: $bg-color;
     border-radius: 10px;
@@ -39,5 +42,7 @@ body {
     &__title {
         font-family: $headers-font;
         text-align: center;
+        margin-bottom: 20px;
+
     }
 }
