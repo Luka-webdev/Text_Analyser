@@ -6,9 +6,14 @@
         @extend %basic-styles;
     }
 
-    &__content {
-        display: inline-block;
+    &__text form {
         width: 100%;
+        height: 100%;
+    }
+
+    &__content {
+        width: 100%;
+        height: 100%;
         padding: 10px;
         border: none;
         background-color: $bg-color;
