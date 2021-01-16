@@ -6,18 +6,28 @@
         text-align: center;
     }
 
-    &__btn {
-        font-family: $headers-font;
-        font-size: 40px;
-        padding: 10px 30px;
-        border-radius: 10px;
-        outline: none;
-        transition: 0.4s;
-
+    &__start {
         &:hover {
             cursor: pointer;
             color: $bg-color;
             background-color: green;
         }
     }
+
+    &__reset {
+        &:hover {
+            cursor: pointer;
+            color: $bg-color;
+            background-color: red;
+        }
+    }
+}
+
+.btn {
+    font-family: $headers-font;
+    font-size: 40px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.4s;
 }
