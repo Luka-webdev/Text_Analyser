@@ -4,5 +4,6 @@
     &__optionsStyles {
         grid-area: styles;
         @extend %basic-styles;
+        text-align: center;
     }
 }

@@ -7,17 +7,14 @@
     }
 
     &__start {
+
         &:hover {
-            cursor: pointer;
-            color: $bg-color;
             background-color: green;
         }
     }
 
     &__reset {
         &:hover {
-            cursor: pointer;
-            color: $bg-color;
             background-color: red;
         }
     }
@@ -30,4 +27,9 @@
     border-radius: 10px;
     outline: none;
     transition: 0.4s;
+
+    &:hover {
+        cursor: pointer;
+        color: $bg-color;
+    }
 }
