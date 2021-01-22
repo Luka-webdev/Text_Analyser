@@ -2,6 +2,7 @@
 
 .analysis {
     &__text {
+        position: relative;
         grid-area: text;
         @extend %basic-styles;
     }
@@ -20,4 +21,26 @@
 
     }
 
+    &__results {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 50%;
+        padding: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        overflow: auto;
+        background-color: darken($bg-color, 10%);
+    }
+
+    &__message {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        height: 40%;
+        border: 2px solid black;
+    }
 }
