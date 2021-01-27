@@ -1,6 +1,7 @@
 /*!Basic styles*/
 
-$bg-color: #dfe4ea;
+$bg-color-one: #dfe4ea;
+$bg-color-two: #345;
 
 $headers-font:'Yusei Magic',
 sans-serif;
@@ -9,7 +10,7 @@ $text-font:'Roboto',
 sans-serif;
 
 %basic-styles {
-    background-color: $bg-color;
+    background-color: $bg-color-one;
     border-radius: 10px;
     padding: 10px;
     width: 100%;
@@ -23,14 +24,10 @@ sans-serif;
 }
 
 body {
-    background-color: #345;
+    background-color: $bg-color-two;
     position: relative;
 }
 
 .visibility {
     visibility: hidden;
-}
-
-.red {
-    color: red;
 }

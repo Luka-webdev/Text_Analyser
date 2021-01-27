@@ -37,14 +37,20 @@
         <form>
           <div class="analysis__inputWrapper">
             <span class="analysis__inputTitle">Wpisz szukaną frazę</span>
-            <input type="text" class="analysis__phrase" />
+            <input type="text" disabled class="analysis__phrase" />
           </div>
 
           <div class="analysis__inputWrapper">
             <span class="analysis__inputTitle"
               >Znajdź frazy o podanej liczbie znaków</span
             >
-            <input type="number" min="0" value="0" class="analysis__length" />
+            <input
+              type="number"
+              min="0"
+              value="0"
+              disabled
+              class="analysis__length"
+            />
           </div>
 
           <div class="analysis__inputWrapper">
@@ -52,19 +58,19 @@
             <select class="analysis__specialOptions">
               <option disabled selected value="0">Wybierz opcję</option>
               <option value="1">Adresy email</option>
-              <option value="2">Numery telefonów</option>
+              <option value="2">Kody pocztowe</option>
               <option value="3">Cytaty</option>
             </select>
           </div>
 
           <div class="analysis__inputWrapper">
             <span class="analysis__inputTitle">Ignoruj wielkość liter</span>
-            <input type="checkbox" class="analysis__letterSize" />
+            <input type="checkbox" disabled class="analysis__letterSize" />
           </div>
 
           <div class="analysis__inputWrapper">
             <span class="analysis__inputTitle">Zlicz ilość wystąpień</span>
-            <input type="checkbox" class="analysis__appearances" />
+            <input type="checkbox" disabled class="analysis__appearances" />
           </div>
         </form>
       </div>
