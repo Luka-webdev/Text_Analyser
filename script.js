@@ -42,7 +42,7 @@ const addStyles = function (wrapper) {
     }
 }
 
-// Declaration of the function to search for special options and numbers
+// Declaration of the functions to search for special options and numbers
 
 const search = function (pattern, flags) {
     let regex = new RegExp(pattern, flags);
