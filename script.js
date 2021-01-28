@@ -5,6 +5,7 @@ const contentWrapper = document.querySelector('.analysis__text form');
 const phrase = document.querySelector('.analysis__phrase');
 const phraseLength = document.querySelector('.analysis__length');
 const specialOptions = document.querySelector('.analysis__specialOptions');
+const numbers = document.querySelector('.analysis__numbers');
 const letterSize = document.querySelector('.analysis__letterSize');
 const appearances = document.querySelector('.analysis__appearances');
 const fontsColor = document.querySelector('.analysis__fontsColor');
@@ -41,7 +42,7 @@ const addStyles = function (wrapper) {
     }
 }
 
-// Declaration of the function to search for special options
+// Declaration of the function to search for special options and numbers
 
 const search = function (pattern, flags) {
     let regex = new RegExp(pattern, flags);
@@ -68,32 +69,73 @@ const search = function (pattern, flags) {
     }
 }
 
+const findSpecialOptions = function () {
+    const option = specialOptions.value;
+    switch (option) {
+        case '1':
+            search('(\\w+\\.)*\\w+@\\w+\\.\\w{2,4}', 'ig');
+            break;
+        case '2':
+            search('\\d{2}-\\d{3}', 'ig');
+            break;
+        case '3':
+            search('\\„.+\\”', 'ig');
+            break;
+        case '4':
+            search('(\\+\\d{2} )?\\d{3}(\\-| |)\\d{3}(\\-| |)\\d{3}', 'ig');
+            break;
+    };
+}
+
+const findNumbers = function () {
+    const number = numbers.value;
+    switch (number) {
+        case '1':
+            search('\\d+(\\,|\\.|\/\)\\d+', 'ig');
+            break;
+        case '2':
+            search('\\d', 'ig');
+            break;
+        case '3':
+            search('\\d{2}', 'ig');
+            break;
+        case '4':
+            search('\\d{3}', 'ig');
+            break;
+        case '5':
+            search('\\d{1} ?\\d{3}', 'ig');
+            break;
+        case '6':
+            search('\\d{2} ?\\d{3}', 'ig');
+            break;
+        case '7':
+            search('(\\d{6,})|((\\d{1,3} )?\\d{3} ?\\d{3})', 'ig');
+            break;
+    };
+}
+
 // Support for the Analyze button
+
+const showResults = function () {
+    contentWrapper.style.height = "48%";
+    results.classList.remove("visibility");
+}
 
 analysisStart.addEventListener("click", function () {
 
     if (results.textContent == "") {
-        if (analysisContent.value != "" && (phrase.value != "" || phraseLength.value != "0" || specialOptions.value != "0")) {
-            contentWrapper.style.height = "48%";
-            results.classList.remove("visibility");
+        if (analysisContent.value != "" && specialOptions.value != "0") {
+            showResults();
+            findSpecialOptions();
 
-            const option = specialOptions.value;
-            switch (option) {
-                case '1':
-                    search('(\\w+\\.)*\\w+@\\w+\\.\\w{2,4}', 'ig');
-                    break;
-                case '2':
-                    search('\\d{2}-\\d{3}', 'ig');
-                    break;
-                case '3':
-                    search('\\„.+\\”', 'ig');
-                    break;
-            };
+        } else if (analysisContent.value != "" && numbers.value != "0") {
+            showResults();
+            findNumbers();
 
-        } else if (analysisContent.value == "" && phrase.value == "" && phraseLength.value == "0" && specialOptions.value == "0") {
-            showMessage("Wprowadź tekst do analizy. Następnie użyj przynajmniej jednej z trzech podstawowych opcji wyszukiwania.");
-        } else if (analysisContent.value != "" && phrase.value == "" && phraseLength.value == "0" && specialOptions.value == "0") {
-            showMessage("Użyj przynajmniej jednej z trzech podstawowych opcji wyszukiwania.");
+        } else if (analysisContent.value == "" && phrase.value == "" && phraseLength.value == "0" && specialOptions.value == "0" && numbers.value == "0") {
+            showMessage("Wprowadź tekst do analizy. Następnie użyj jednej z czterech podstawowych opcji wyszukiwania.");
+        } else if (analysisContent.value != "" && phrase.value == "" && phraseLength.value == "0" && specialOptions.value == "0" && numbers.value == "0") {
+            showMessage("Użyj jednej z czterech podstawowych opcji wyszukiwania.");
         }
     }
 });
@@ -105,6 +147,7 @@ analysisReset.addEventListener("click", function () {
     phrase.value = "";
     phraseLength.value = "0";
     specialOptions.value = "0";
+    numbers.value = "0";
     letterSize.checked = false;
     appearances.checked = false;
     fontsColor.value = "0";
