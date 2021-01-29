@@ -45,8 +45,8 @@ const addStyles = function (wrapper) {
 
 // Declaration of the functions to search for special options and numbers
 
-const search = function (pattern, flags) {
-    let regex = new RegExp(pattern, flags);
+const search = function (pattern) {
+    let regex = new RegExp(pattern, letterSize.checked ? 'ig' : 'g');
     let fittedResults = [];
     let indexArray = [];
     indexArray.push(0)
@@ -74,27 +74,27 @@ const search = function (pattern, flags) {
 }
 
 const findPhrase = function () {
-    search(`${phrase.value}`, 'ig');
+    search(`${phrase.value}`);
 }
 
 const findPhraseLength = function () {
-    search(`\\b\\w{${phraseLength.value}}\\b`, 'ig');
+    search(`\\b\\w{${phraseLength.value}}\\b`);
 }
 
 const findSpecialOptions = function () {
     const option = specialOptions.value;
     switch (option) {
         case '1':
-            search('(\\w+\\.)*\\w+@\\w+\\.\\w{2,4}', 'ig');
+            search('(\\w+\\.)*\\w+@\\w+\\.\\w{2,4}');
             break;
         case '2':
-            search('\\d{2}-\\d{3}', 'ig');
+            search('\\d{2}-\\d{3}');
             break;
         case '3':
-            search('\\„.+\\”', 'ig');
+            search('\\„.+\\”');
             break;
         case '4':
-            search('(\\+\\d{2} )?\\d{3}(\\-| |)\\d{3}(\\-| |)\\d{3}', 'ig');
+            search('(\\+\\d{2} )?\\d{3}(\\-| |)\\d{3}(\\-| |)\\d{3}');
             break;
     };
 }
@@ -103,25 +103,25 @@ const findNumbers = function () {
     const number = numbers.value;
     switch (number) {
         case '1':
-            search('\\d+(\\,|\\.|\/\)\\d+', 'ig');
+            search('\\d+(\\,|\\.|\/\)\\d+');
             break;
         case '2':
-            search('\\d', 'ig');
+            search('\\d');
             break;
         case '3':
-            search('\\d{2}', 'ig');
+            search('\\d{2}');
             break;
         case '4':
-            search('\\d{3}', 'ig');
+            search('\\d{3}');
             break;
         case '5':
-            search('\\d{1} ?\\d{3}', 'ig');
+            search('\\d{1} ?\\d{3}');
             break;
         case '6':
-            search('\\d{2} ?\\d{3}', 'ig');
+            search('\\d{2} ?\\d{3}');
             break;
         case '7':
-            search('(\\d{6,})|((\\d{1,3} )?\\d{3} ?\\d{3})', 'ig');
+            search('(\\d{6,})|((\\d{1,3} )?\\d{3} ?\\d{3})');
             break;
     };
 }
