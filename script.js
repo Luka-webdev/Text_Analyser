@@ -69,6 +69,14 @@ const search = function (pattern, flags) {
     }
 }
 
+const findPhrase = function () {
+    search(`${phrase.value}`, 'ig');
+}
+
+const findPhraseLength = function () {
+    search(`\\b\\w{${phraseLength.value}}\\b`, 'ig');
+}
+
 const findSpecialOptions = function () {
     const option = specialOptions.value;
     switch (option) {
@@ -131,6 +139,15 @@ analysisStart.addEventListener("click", function () {
         } else if (analysisContent.value != "" && numbers.value != "0") {
             showResults();
             findNumbers();
+
+        } else if (analysisContent.value != "" && phrase.value != "") {
+            showResults();
+            findPhrase();
+
+        } else if (analysisContent.value != "" && phraseLength.value != "0") {
+            showResults();
+            console.log("ok")
+            findPhraseLength();
 
         } else if (analysisContent.value == "" && phrase.value == "" && phraseLength.value == "0" && specialOptions.value == "0" && numbers.value == "0") {
             showMessage("Wprowadź tekst do analizy. Następnie użyj jednej z czterech podstawowych opcji wyszukiwania.");
