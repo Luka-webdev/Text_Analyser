@@ -17,6 +17,7 @@ const message = document.querySelector('.analysis__message');
 const results = document.querySelector('.analysis__results');
 const information = document.querySelector('.analysis__info');
 const closeLink = document.querySelector('.analysis__link');
+const msgAboutAppearances = document.querySelector('.analysis__msgAboutAppearances');
 
 // Declaration of the function showing messages to the user
 
@@ -66,6 +67,9 @@ const search = function (pattern, flags) {
             }
         }
         results.appendChild(wordWrapper);
+    }
+    if (appearances.checked) {
+        msgAboutAppearances.textContent = "Ilość wystąpień w tekście: " + fittedResults.length;
     }
 }
 
@@ -171,6 +175,7 @@ analysisReset.addEventListener("click", function () {
     fontsUnderscore.checked = false;
     results.classList.add("visibility");
     contentWrapper.style.height = "100%";
+    msgAboutAppearances.textContent = "";
     const words = results.querySelectorAll('span');
     for (let i = 0; i < words.length; i++) {
         results.removeChild(words[i]);
