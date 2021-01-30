@@ -16,7 +16,7 @@ const analysisReset = document.querySelector('.analysis__reset');
 const message = document.querySelector('.analysis__message');
 const results = document.querySelector('.analysis__results');
 const information = document.querySelector('.analysis__info');
-const closeLink = document.querySelector('.analysis__link');
+const closeButton = document.querySelector('.analysis__closeButton');
 const msgAboutAppearances = document.querySelector('.analysis__msgAboutAppearances');
 
 // Declaration of the function showing messages to the user
@@ -24,7 +24,7 @@ const msgAboutAppearances = document.querySelector('.analysis__msgAboutAppearanc
 const showMessage = function (content) {
     message.classList.remove("visibility");
     information.textContent = content;
-    closeLink.addEventListener("click", function () {
+    closeButton.addEventListener("click", function () {
         message.classList.add("visibility");
     })
 }
@@ -43,7 +43,7 @@ const addStyles = function (wrapper) {
     }
 }
 
-// Declaration of the functions to search for special options and numbers
+// Declaration of the function to search in text
 
 const search = function (pattern) {
     let regex = new RegExp(pattern, letterSize.checked ? 'ig' : 'g');
@@ -73,13 +73,19 @@ const search = function (pattern) {
     }
 }
 
+// Declaration of the function to find phrase
+
 const findPhrase = function () {
     search(`${phrase.value}`);
 }
 
+// Declaration of the function to find words of specific length
+
 const findPhraseLength = function () {
     search(`\\b\\w{${phraseLength.value}}\\b`);
 }
+
+// Declaration of the function to find special options
 
 const findSpecialOptions = function () {
     const option = specialOptions.value;
@@ -98,6 +104,8 @@ const findSpecialOptions = function () {
             break;
     };
 }
+
+// Declaration of the function to find numbers
 
 const findNumbers = function () {
     const number = numbers.value;
@@ -150,7 +158,6 @@ analysisStart.addEventListener("click", function () {
 
         } else if (analysisContent.value != "" && phraseLength.value != "0") {
             showResults();
-            console.log("ok")
             findPhraseLength();
 
         } else if (analysisContent.value == "" && phrase.value == "" && phraseLength.value == "0" && specialOptions.value == "0" && numbers.value == "0") {
