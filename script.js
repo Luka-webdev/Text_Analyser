@@ -18,6 +18,40 @@ const results = document.querySelector('.analysis__results');
 const information = document.querySelector('.analysis__info');
 const closeButton = document.querySelector('.analysis__closeButton');
 const msgAboutAppearances = document.querySelector('.analysis__msgAboutAppearances');
+const choiceInputs = document.querySelectorAll('input[type=radio]');
+const basicSearchOptions = [phrase, phraseLength, specialOptions, numbers];
+
+//Add function that allows to select only one search option
+
+const choiceOneInput = function () {
+    for (let choiceInput of choiceInputs) {
+        choiceInput.addEventListener("click", function (e) {
+            for (let i = 0; i < choiceInputs.length; i++) {
+                if (choiceInputs[i].checked && choiceInputs[i] != e.target) {
+                    choiceInputs[i].checked = false;
+                    basicSearchOptions[i].disabled = true;
+                }
+            }
+            const includedClass = e.target.classList[1];
+            switch (includedClass) {
+                case 'phrase':
+                    phrase.disabled = false;
+                    break;
+                case 'length':
+                    phraseLength.disabled = false;
+                    break;
+                case 'specialOptions':
+                    specialOptions.disabled = false;
+                    break;
+                case 'numbers':
+                    numbers.disabled = false;
+                    break;
+            };
+        })
+    }
+}
+
+choiceOneInput();
 
 // Declaration of the function showing messages to the user
 
@@ -144,19 +178,19 @@ const showResults = function () {
 analysisStart.addEventListener("click", function () {
 
     if (results.textContent == "") {
-        if (analysisContent.value != "" && specialOptions.value != "0") {
+        if (analysisContent.value != "" && specialOptions.value != "0" && specialOptions.disabled == false) {
             showResults();
             findSpecialOptions();
 
-        } else if (analysisContent.value != "" && numbers.value != "0") {
+        } else if (analysisContent.value != "" && numbers.value != "0" && numbers.disabled == false) {
             showResults();
             findNumbers();
 
-        } else if (analysisContent.value != "" && phrase.value != "") {
+        } else if (analysisContent.value != "" && phrase.value != "" && phrase.disabled == false) {
             showResults();
             findPhrase();
 
-        } else if (analysisContent.value != "" && phraseLength.value != "0") {
+        } else if (analysisContent.value != "" && phraseLength.value != "0" && phraseLength.disabled == false) {
             showResults();
             findPhraseLength();
 
@@ -186,5 +220,9 @@ analysisReset.addEventListener("click", function () {
     const words = results.querySelectorAll('span');
     for (let i = 0; i < words.length; i++) {
         results.removeChild(words[i]);
+    }
+    for (let j = 0; j < basicSearchOptions.length; j++) {
+        basicSearchOptions[j].disabled = true;
+        choiceInputs[j].checked = false;
     }
 });
