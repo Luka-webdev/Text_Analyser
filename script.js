@@ -12,7 +12,8 @@ const fontsColor = document.querySelector('.analysis__fontsColor');
 const fontsBold = document.querySelector('.analysis__bold');
 const fontsUnderscore = document.querySelector('.analysis__underscore');
 const analysisStart = document.querySelector('.analysis__start');
-const analysisReset = document.querySelector('.analysis__reset');
+const ResetSettings = document.querySelector('.analysis__resetSettings');
+const ResetAll = document.querySelector('.analysis__resetAll');
 const message = document.querySelector('.analysis__message');
 const results = document.querySelector('.analysis__results');
 const information = document.querySelector('.analysis__info');
@@ -173,6 +174,7 @@ const findNumbers = function () {
 const showResults = function () {
     contentWrapper.style.height = "48%";
     results.classList.remove("visibility");
+    ResetSettings.classList.remove('visibility');
 }
 
 analysisStart.addEventListener("click", function () {
@@ -202,10 +204,9 @@ analysisStart.addEventListener("click", function () {
     }
 });
 
-// Support for the Reset button
+// Support for the ResetAll button
 
-analysisReset.addEventListener("click", function () {
-    analysisContent.value = "";
+const reset = function () {
     phrase.value = "";
     phraseLength.value = "0";
     specialOptions.value = "0";
@@ -225,4 +226,16 @@ analysisReset.addEventListener("click", function () {
         basicSearchOptions[j].disabled = true;
         choiceInputs[j].checked = false;
     }
+    ResetSettings.classList.add('visibility');
+}
+
+ResetAll.addEventListener("click", function () {
+    analysisContent.value = "";
+    reset();
+});
+
+// Support for the ResetSettings button
+
+ResetSettings.addEventListener("click", function () {
+    reset();
 });

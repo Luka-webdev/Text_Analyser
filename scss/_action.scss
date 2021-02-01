@@ -4,6 +4,7 @@
     &__action {
         grid-area: button;
         text-align: center;
+        display: flex;
     }
 
     &__start {
@@ -13,7 +14,13 @@
         }
     }
 
-    &__reset {
+    &__resetSettings {
+        &:hover {
+            background-color: blue;
+        }
+    }
+
+    &__resetAll {
         &:hover {
             background-color: red;
         }
@@ -22,8 +29,9 @@
 
 .btn {
     font-family: $headers-font;
-    font-size: 40px;
-    padding: 10px 30px;
+    font-size: 26px;
+    padding: 10px;
+    border: 2px solid black;
     border-radius: 10px;
     outline: none;
     transition: 0.4s;
