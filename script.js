@@ -117,7 +117,7 @@ const findPhrase = function () {
 // Declaration of the function to find words of specific length
 
 const findPhraseLength = function () {
-    search(`\\b\\w{${phraseLength.value}}\\b`);
+    search(`\\b \\w{${phraseLength.value}} \\b`);
 }
 
 // Declaration of the function to find special options
